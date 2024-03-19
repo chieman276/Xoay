@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Băng me rum</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <style>
+    .img_boomerang {
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="padding_middle"style="padding: 186px;background-image: url('thienha.gif');">
+    <img class="img_boomerang" style="width: 120px; left: 0;" src="boomerang.png">
+  </div>
+  <button class="run_boomerang">Run</button>
+  <script type="text/javascript">
+    var tmpAnimation = 0;
+    $("button").click(function () {
+      var element = $("img");
+      tmpAnimation = tmpAnimation + 90000;
+      $({ degrees: tmpAnimation - 90000 }).animate({ degrees: tmpAnimation }, {
+        duration: 12000,
+        step: function (now) {
+          element.css({
+            transform: 'rotate(' + now + 'deg)'
+          });
+        }
+      });
+
+      element.animate({ left: '+=1000' }, 3000).animate({ left: 0 }, 1000);
+    });
+  </script>
+</body>
+
+</html>
